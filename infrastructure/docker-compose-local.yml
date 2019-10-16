@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+
+    players-application:
+      image: players-application:latest
+      environment:
+            - BWF_ENV=local
+            - LOG_PATH=/var/log
+      ports: 
+          - 1000:1000
+      depends_on:
+          - postgresdb
+      volumes:
+          - /var/log:/var/log:z
+
+    postgresdb:
+        container_name: postgresdb
+        image: postgres:latest
+        volumes:
+            - /data/bwf-database:/var/lib/postgresql/data:z
+        environment:
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_DB=postgres
+        ports:
+            - 5432:5432
