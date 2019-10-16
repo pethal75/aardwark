@@ -1,0 +1,12 @@
+DROP TABLE {var $application.getSqlSchema()}.{var $entity.getSQLName()};
+
+CREATE TABLE {var $application.getSqlSchema()}.{var $entity.getSQLName()}
+(
+	{foreach $entity.getAttributes() as $attribute}
+		{var $attribute.getSQLName()} {var $attribute.getPostgresType()},
+	{/foreach}
+
+	CONSTRAINT {var $entity.getSQLName()}_pk PRIMARY KEY ({var $entity.getKeyAttributeSQLName()})
+);
+
+{/foreach}

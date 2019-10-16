@@ -1,0 +1,23 @@
+{{ 
+
+}}
+
+{var variable}
+
+{var object.functionCall(parameters)}
+
+{foreach list as value}
+
+{/foreach}
+
+{if }
+
+{else}
+
+{/if}
+
+class LatteTemplate {
+	LatteTemplate(file|string);
+	
+	render(hashmap parameters);
+}

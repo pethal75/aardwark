@@ -1,0 +1,26 @@
+package com.{var $application.getName()}.{var $application.getSqlSchema()}.xml.{var $object.getPackageName()};
+
+import java.util.Date;
+
+public class {var $object.getJavaXmlName()} {
+
+{foreach $object.getAttributes() as $attribute}
+    private String {var $attribute.getName()};
+
+{/foreach}
+
+	public {var $object.getJavaXmlName()}()
+	{
+		
+	}
+	
+{foreach $object.getAttributes() as $attribute}
+	public String get{var $attribute.getUpperCamelName()}() {
+		return {var $attribute.getName()};
+	}
+
+	public void set{var $attribute.getUpperCamelName()}(String {var $attribute.getName()}) {
+		this.{var $attribute.getName()} = {var $attribute.getName()};
+	}
+{/foreach}
+}

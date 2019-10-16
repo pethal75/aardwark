@@ -1,0 +1,18 @@
+package com.{var $application.getName()}.{var $application.getSqlSchema()}.model.{var $object.getPackageName()};
+
+import java.util.List;
+import java.util.Date;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface {var $object.getJavaEntityName()}Repository extends CrudRepository<{var $object.getJavaEntityName()}, Integer> {
+
+{foreach $object.getAttributes() as $attribute}
+    List<{var $object.getJavaEntityName()}> findBy{var $attribute.getUpperCamelName()}({var $attribute.getJavaType()} {var $attribute.getLowerCamelName()});
+{if $attribute.isDate()}
+    List<{var $object.getJavaEntityName()}> findBy{var $attribute.getUpperCamelName()}After({var $attribute.getJavaType()} {var $attribute.getLowerCamelName()});
+    List<{var $object.getJavaEntityName()}> findBy{var $attribute.getUpperCamelName()}Before({var $attribute.getJavaType()} {var $attribute.getLowerCamelName()});
+{/if}
+{/foreach}
+
+}

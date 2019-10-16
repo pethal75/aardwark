@@ -1,0 +1,12 @@
+Test include command
+
+CREATE TABLE 
+(
+);
+
+public void function()
+{
+	// TODO
+}
+
+end.

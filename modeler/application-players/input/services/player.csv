@@ -1,0 +1,4 @@
+Service;Resource Parameters;Query Parameters;Response Node;Description
+Player/{APlayerCode};APlayerCode Yes The code or member ID of the player.;;Player;Returns detailed information of the specified player.
+ActivePlayerList;;"refdate No Reference date formatted using the ISO-8601 standard. The current date
+windowsize No Requested day range before and after the reference date. 10";Player;Returns a list of active players active in tournaments that start (windowsize) days before or after the reference date.

@@ -1,0 +1,5 @@
+Template start
+
+	Title : My test object
+
+Template end.

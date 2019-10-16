@@ -1,0 +1,50 @@
+package com.{var $application.getName()}.{var $application.getSqlSchema()}.model.{var $object.getPackageName()};
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Table(name="{var $object.getSQLName()}", schema = "{var $application.getSqlSchema()}") 
+@Entity
+public class {var $object.getJavaEntityName()} {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "hibernate_sequence")
+    @SequenceGenerator(name="hibernate_sequence", sequenceName = "public.hibernate_sequence", schema = "public", allocationSize=1)
+    //@SequenceGenerator(name="{var $object.getSQLName()}_generator", sequenceName = "{var $object.getSQLName()}_seq", allocationSize=1)
+{foreach $object.getAttributes() as $attribute}
+    @Column(name="{var $attribute.getSQLName()}")
+    private {var $attribute.getJavaType()} {var $attribute.getLowerCamelName()};
+
+{/foreach}
+
+    public {var $object.getJavaEntityName()}() {}
+
+    @Override
+    public String toString() {
+        return String.format(
+                "{var $object.getJavaEntityName()}",
+                id{var $object.getUpperCamelName()});
+    }
+
+	public int getId() {
+		return id{var $object.getUpperCamelName()};
+	}
+
+{foreach $object.getAttributes() as $attribute}
+	public {var $attribute.getJavaType()} get{var $attribute.getUpperCamelName()}() {
+		return {var $attribute.getLowerCamelName()};
+	}
+
+	public void set{var $attribute.getUpperCamelName()}({var $attribute.getJavaType()} {var $attribute.getLowerCamelName()}) {
+		this.{var $attribute.getLowerCamelName()} = {var $attribute.getLowerCamelName()};
+	}
+{/foreach}
+}
+

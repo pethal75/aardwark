@@ -1,0 +1,62 @@
+openapi: "3.0.0"
+info:
+  description: "N/A"
+  version: "1.0.0"
+  title: "N/A"
+servers:
+  - url: "1.0"
+paths:
+  /Player/{APlayerCode}:
+    get:
+      tags:
+      - "player"
+      summary: "N/A"
+      parameters:
+      - in: "path"
+        name: APlayerCode
+        description: "N/A"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/xml:
+              schema:
+                type: string
+        '405':
+          description: "Invalid input"
+  /ActivePlayerList:
+    get:
+      tags:
+      - "player"
+      summary: "N/A"
+      parameters:
+      - in: "query"
+        name: refdate
+        description: "N/A"
+        schema:
+          type: string
+      - in: "query"
+        name: windowsize
+        description: "N/A"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/xml:
+              schema:
+                type: string
+        '405':
+          description: "Invalid input"
+
+security:
+  - ts_auth: []
+
+components:
+  securitySchemes:
+    ts_auth:
+      type: http
+      scheme: basic

@@ -1,0 +1,81 @@
+Node;Field;Type;Description
+Player;Code;Text;The code of the player.
+;MemberID;Text;The member ID of the player.
+;NameTypeID;Integer;The name type id of the player:
+;;;0 = Default
+;;;1 = Asian
+;Firstname;Text;The first name of the player.
+;Middlename;Text;The middle name of the player.
+;Lastname;Text;The last name of the player.
+;Lastname2;Text;The last name of the player.
+;GenderID;Integer;The gender id of the player:
+;;;0 = Unknown
+;;;1 = Male
+;;;2 = Female
+;DateOfBirth;DateTime;The date of birth of the player.
+;Nationality;Text;The country code of the nationality of the player.
+;Active;Boolean;Active is true if the player has an active player membership at the time of the API call.
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;

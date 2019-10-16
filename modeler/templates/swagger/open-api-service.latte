@@ -1,0 +1,57 @@
+openapi: "3.0.0"
+info:
+  description: "N/A"
+  version: "1.0.0"
+  title: "N/A"
+servers:
+  - url: "1.0"
+paths:
+{foreach $package.getServices() as $service}
+  /{var $service.getPath()}:
+    {var $service.getMethod()}:
+      tags:
+      - "{var $service.getPackageName()}"
+      summary: "N/A"
+{if $service.hasParameters()}
+      parameters:
+{foreach $service.getQueryParameters() as $parameter}
+      - in: "query"
+        name: {var $parameter.getName()}
+        description: "N/A"
+        schema:
+          type: string
+{/foreach}
+{foreach $service.getPathParameters() as $parameter}
+      - in: "path"
+        name: {var $parameter.getName()}
+        description: "N/A"
+        schema:
+          type: string
+{/foreach}
+{/if}
+{if $service.isPostMethod()}
+      requestBody:
+        content:
+          application/json:
+            schema:      # Request body contents
+              type: string
+{/if}
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/xml:
+              schema:
+                type: string
+        '405':
+          description: "Invalid input"
+{/foreach}
+
+security:
+  - ts_auth: []
+
+components:
+  securitySchemes:
+    ts_auth:
+      type: http
+      scheme: basic

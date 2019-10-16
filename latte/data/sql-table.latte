@@ -1,0 +1,10 @@
+CREATE TABLE {var $entity.getName()}
+(
+	{foreach $entity.getAttributes() as $attribute}
+
+		{var $attribute.getName()} {var $attribute.getType()} ,
+	
+	{/foreach}
+
+	CONSTRAINT {var $entity.getName()}_pk PRIMARY KEY ({var $entity.getKeyAttribute()})
+);
