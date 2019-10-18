@@ -2,7 +2,7 @@
 
 N/A
 - API version: 1.0.0
-  - Build date: 2019-10-11T13:08:14.324+02:00[Europe/Prague]
+  - Build date: 2019-10-18T07:27:10.062+02:00[Europe/Prague]
 
 N/A
 

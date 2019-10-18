@@ -18,57 +18,47 @@ public class PlayersCommandLineRunner implements CommandLineRunner {
 
 	private static final Logger log = LoggerFactory.getLogger(PlayersCommandLineRunner.class);
 
-	public static final String DEFAULT_START_DATE = "2000-01-01";
-	public static final int DEFAULT_START_YEAR = 2000;
-	
-	public static final int DEFAULT_DATE_STEP = 185;
-	
-	public static final int DEFAULT_COUNT = 10000;
-	
 	@Override
 	public void run(String... args) throws Exception {
 		
 		log.info("--- Starting players command line application -----------------------------------------");
-		
-		PlayerApi client = new PlayerApi();
 
+		// Prepare client
+		PlayerApi client = new PlayerApi();
 		client.getApiClient().setUsername("tsapi_bwf_test3");
 		client.getApiClient().setPassword("JFt8Fq71rZqTB0WzLosm3K99CKWbkjsl");
-		
 		client.getApiClient().setConnectTimeout(20000);
 		client.getApiClient().setReadTimeout(20000);
 		client.getApiClient().setWriteTimeout(20000);
 
-			String response = client.activePlayerListGet("","");
-			
-			System.out.println("Success " + response);
+		// Call API
+		String response = client.activePlayerListGet("","");
+		
+		System.out.println("Success " + response);
 
-			XStream xstream = new XStream();
-
-			xstream.addPermission(NullPermission.NULL);
-			xstream.addPermission(PrimitiveTypePermission.PRIMITIVES);
-			xstream.allowTypeHierarchy(Collection.class);
-			// allow any type from the same package
-			xstream.allowTypesByWildcard(new String[] {
-			    ResultActivePlayerListXml.class.getPackage().getName()+".*"
-			});
+		// Prepare XStream
+		XStream xstream = new XStream();
+		xstream.addPermission(NullPermission.NULL);
+		xstream.addPermission(PrimitiveTypePermission.PRIMITIVES);
+		xstream.allowTypeHierarchy(Collection.class);
+		xstream.allowTypesByWildcard(new String[] {ResultActivePlayerListXml.class.getPackage().getName()+".*"});
+		xstream.alias("Result", ResultActivePlayerListXml.class);
+		xstream.addImplicitCollection(ResultActivePlayerListXml.class, "players");
+		xstream.alias("Player", PlayerXml.class);
+		
+		// Parse response
+		ResultActivePlayerListXml result = (ResultActivePlayerListXml)xstream.fromXML(response);
+		
+		int index = 1;
+		
+		// Print players to console
+		for(PlayerXml p : result.getPlayers() )
+		{
+			log.info( index + ".player code " + p.getCode() + " " + p.getFirstname() + " " + p.getLastname());
 			
-			xstream.alias("Result", ResultActivePlayerListXml.class);
-			xstream.addImplicitCollection(ResultActivePlayerListXml.class, "players");
-			xstream.alias("Player", PlayerXml.class);
+			index++;
+		}
 			
-			ResultActivePlayerListXml result = (ResultActivePlayerListXml)xstream.fromXML(response);
-			
-			int index = 0;
-			
-			for(PlayerXml p : result.getPlayers() )
-			{
-				System.out.println( index + ".player code " + p.getCode() + " " + p.getFirstname() + " " + p.getLastname());
-				
-				index++;
-			}
-			
-
 		log.info("--- Ending players command line application -----------------------------------------");
 	}
 }
