@@ -27,8 +27,8 @@ public class PlayersCommandLineRunner implements CommandLineRunner {
 		// Setup client
 		//-------------------------
 		PlayerApi client = new PlayerApi();
-		client.getApiClient().setUsername("tsapi_bwf_test3");
-		client.getApiClient().setPassword("JFt8Fq71rZqTB0WzLosm3K99CKWbkjsl");
+		client.getApiClient().setUsername("xxx");
+		client.getApiClient().setPassword("yyy");
 
 		//-------------------------
 		// Call API

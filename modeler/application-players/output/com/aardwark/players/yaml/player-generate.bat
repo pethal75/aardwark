@@ -1,0 +1,1 @@
+java -jar templates/swagger/openapi-generator-cli.jar generate -i application-players\output\/com/aardwark/players/yaml/player.yaml -l java -c templates/swagger/config.json --api-package com.aardwark.players.api --invoker-package org.openapitools.client -o application-players\output\/com/aardwark/players/api
