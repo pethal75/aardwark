@@ -23,20 +23,21 @@ public class PlayersCommandLineRunner implements CommandLineRunner {
 		
 		log.info("--- Starting players command line application -----------------------------------------");
 
-		// Prepare client
+		//-------------------------
+		// Setup client
+		//-------------------------
 		PlayerApi client = new PlayerApi();
 		client.getApiClient().setUsername("tsapi_bwf_test3");
 		client.getApiClient().setPassword("JFt8Fq71rZqTB0WzLosm3K99CKWbkjsl");
-		client.getApiClient().setConnectTimeout(20000);
-		client.getApiClient().setReadTimeout(20000);
-		client.getApiClient().setWriteTimeout(20000);
 
+		//-------------------------
 		// Call API
+		//-------------------------
 		String response = client.activePlayerListGet("","");
 		
-		System.out.println("Success " + response);
-
+		//-------------------------
 		// Prepare XStream
+		//-------------------------
 		XStream xstream = new XStream();
 		xstream.addPermission(NullPermission.NULL);
 		xstream.addPermission(PrimitiveTypePermission.PRIMITIVES);
@@ -46,12 +47,16 @@ public class PlayersCommandLineRunner implements CommandLineRunner {
 		xstream.addImplicitCollection(ResultActivePlayerListXml.class, "players");
 		xstream.alias("Player", PlayerXml.class);
 		
+		//-------------------------
 		// Parse response
+		//-------------------------
 		ResultActivePlayerListXml result = (ResultActivePlayerListXml)xstream.fromXML(response);
 		
+		//-------------------------
+		// Print players to console
+		//-------------------------
 		int index = 1;
 		
-		// Print players to console
 		for(PlayerXml p : result.getPlayers() )
 		{
 			log.info( index + ".player code " + p.getCode() + " " + p.getFirstname() + " " + p.getLastname());
