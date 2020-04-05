@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.paragon.controller.rules.ParagonRule;
+import com.paragon.controller.rules.ParagonRule10Sim;
 import com.paragon.controller.rules.ParagonRuleBOGOF;
+import com.paragon.controller.rules.ParagonRuleInsurance;
 import com.paragon.io.ParagonFileReader;
 import com.paragon.io.ParagonPrinter;
 import com.paragon.model.Paragon;
@@ -40,6 +42,8 @@ public class ParagonController {
 		this.itemsStore.put("Wireless earphones", new ParagonItem("Wireless earphones", BigDecimal.valueOf(50), ItemType.EARPHONE));
 		
 		this.rules.add(new ParagonRuleBOGOF());
+		this.rules.add(new ParagonRuleInsurance());
+		this.rules.add(new ParagonRule10Sim());
 	}
 
 	/**

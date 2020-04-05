@@ -77,18 +77,18 @@ class ParagonPrinterTest {
 				"|                                             |\r\n" + 
 				"|Items:                                       |\r\n" + 
 				"|                                             |\r\n" + 
-				"|Phone insurance                        120,00|\r\n" + 
+				"|Phone insurance                         96,00|\r\n" + 
 				"|  Tax                                    0,00|\r\n" + 
 				"|                                             |\r\n" + 
 				"|Wireless earphones                      50,00|\r\n" + 
 				"|  Tax                                    6,00|\r\n" + 
 				"|                                             |\r\n" + 
 				"-----------------------------------------------\r\n" + 
-				"|Total Net Amount:                      170,00|\r\n" + 
+				"|Total Net Amount:                      146,00|\r\n" + 
 				"|                                             |\r\n" + 
 				"|Total Tax:                               6,00|\r\n" + 
 				"|                                             |\r\n" + 
-				"|Total Amount:                          176,00|\r\n" + 
+				"|Total Amount:                          152,00|\r\n" + 
 				"-----------------------------------------------\r\n";
 		
 		assertEquals(outputReal, output);
@@ -125,18 +125,18 @@ class ParagonPrinterTest {
 				"|Wired earphones                         30,00|\r\n" + 
 				"|  Tax                                    3,60|\r\n" + 
 				"|                                             |\r\n" + 
-				"|Phone insurance                        120,00|\r\n" + 
+				"|Phone insurance                         96,00|\r\n" + 
 				"|  Tax                                    0,00|\r\n" + 
 				"|                                             |\r\n" + 
 				"|Wireless earphones                      50,00|\r\n" + 
 				"|  Tax                                    6,00|\r\n" + 
 				"|                                             |\r\n" + 
 				"-----------------------------------------------\r\n" + 
-				"|Total Net Amount:                      230,00|\r\n" + 
+				"|Total Net Amount:                      206,00|\r\n" + 
 				"|                                             |\r\n" + 
 				"|Total Tax:                              13,20|\r\n" + 
 				"|                                             |\r\n" + 
-				"|Total Amount:                          243,20|\r\n" + 
+				"|Total Amount:                          219,20|\r\n" + 
 				"-----------------------------------------------\r\n";
 		
 		assertEquals(outputReal, output);

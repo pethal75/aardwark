@@ -25,6 +25,11 @@ class ParagonMainTest {
 		String args5[] = { };
 		
 		ParagonMain.main(args5);
+
+		String args6[] = { "data/paragon4.txt" };
+		
+		ParagonMain.main(args6);
+
 	}
 
 }

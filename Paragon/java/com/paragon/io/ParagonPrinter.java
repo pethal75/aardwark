@@ -22,7 +22,7 @@ public class ParagonPrinter {
 	public static String printToString(Paragon paragon) {
 		
 		if ( paragon == null ) {
-			System.out.println("Null paragon");
+			System.out.println("Invalid paragon");
 			return "";
 		}
 		
