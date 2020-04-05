@@ -65,6 +65,18 @@ public class Paragon {
 			this.items.add(item);
 	}
 
+	/**
+	 * Adds new item at specific position
+	 * 
+	 * @param item
+	 * @param index
+	 */
+	public void addItem(int index, ParagonItem item) {
+
+		if ( item != null )
+			this.items.add(index, item);
+	}
+
 	public ArrayList<ParagonItem> getItems() {
 		return this.items;
 	}

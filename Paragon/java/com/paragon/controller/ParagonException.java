@@ -13,8 +13,11 @@ public class ParagonException extends Exception {
 	 */
 	private static final long serialVersionUID = 209564541046746187L;
 
+	public ParagonException(String message) {
+		super(message);
+	}
+
 	public ParagonException(Throwable exc) {
 		super(exc);
 	}
-
 }

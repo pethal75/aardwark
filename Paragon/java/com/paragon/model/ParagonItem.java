@@ -21,33 +21,44 @@ public class ParagonItem {
 	private BigDecimal tax;
 	
 	/** Attribute whether this item is insurance type */
-	private boolean insurance;
+	public enum ItemType {
+		UNKNOWN, INSURANCE, SIM, EARPHONE;
+	};
+
+	private ItemType type;
 	
-	public ParagonItem(String name, BigDecimal price, boolean insurance) {
+	public ParagonItem(String name, BigDecimal price, ItemType type) {
 		this.name = name;
 		this.price = price;
-		this.insurance = insurance;
+		this.type = type;
 
 		this.recalculateTax();
 	}
 	
-	public ParagonItem(String name, int price, boolean insurance) {
+	public ParagonItem(String name, int price, ItemType type) {
 		this.name = name;
 		this.price = BigDecimal.valueOf(price);
-		this.insurance = insurance;
-
+		this.type = type;
+		
 		this.recalculateTax();
 	}
 
 	public ParagonItem(String name) {
 		this.name = name;
 		this.price = null;
-		this.insurance = false;
+		this.type = ItemType.UNKNOWN;
 
 		this.recalculateTax();
 	}
 
-	private MathContext mc = new MathContext(2);
+	public ParagonItem(ParagonItem item) {
+		this.name = item.getName();
+		this.price = new BigDecimal(item.getPrice().toBigInteger());
+		this.tax = new BigDecimal(item.getTax().toBigInteger());
+		this.type = item.getType();
+	}
+
+	private static final MathContext mc = new MathContext(2);
 	
 	/**
 	 * Recalculates 12% of tax, except for insurance products
@@ -57,7 +68,7 @@ public class ParagonItem {
 		if ( this.price == null )
 			return;
 		
-		if ( this.insurance == false )
+		if ( !this.isType(ItemType.INSURANCE) )
 			this.tax = this.price.multiply(BigDecimal.valueOf(12)).divide(BigDecimal.valueOf(100)).round(mc);
 		else
 			this.tax = BigDecimal.valueOf(0);
@@ -81,12 +92,16 @@ public class ParagonItem {
 		return tax;
 	}
 
-	public boolean isInsurance() {
-		return insurance;
+	public boolean isType(ItemType type) {
+		return this.type == type;
 	}
 
-	public void setInsurance(boolean insurance) {
-		this.insurance = insurance;
+	public ItemType getType() {
+		return this.type;
+	}
+
+	public void setType(ItemType type) {
+		this.type = type;
 		
 		this.recalculateTax();
 	}

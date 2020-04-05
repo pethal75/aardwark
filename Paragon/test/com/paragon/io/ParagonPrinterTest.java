@@ -4,7 +4,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -28,12 +27,6 @@ class ParagonPrinterTest {
 		assertNotNull(p1);
 		assertNotNull(p1.getItems());
 		
-		p1.getItems().get(0).setPrice(BigDecimal.valueOf(10));
-		p1.getItems().get(1).setPrice(BigDecimal.valueOf(20));
-		p1.getItems().get(2).setPrice(BigDecimal.valueOf(30));
-		
-		p1.recalculateTotals();
-		
 		String output = ParagonPrinter.printToString(p1);
 		
 		String outputReal = "-----------------------------------------------\r\n" + 
@@ -42,11 +35,14 @@ class ParagonPrinterTest {
 				"|                                             |\r\n" + 
 				"|Items:                                       |\r\n" + 
 				"|                                             |\r\n" + 
-				"|SIM card                                10,00|\r\n" + 
-				"|  Tax                                    1,20|\r\n" + 
-				"|                                             |\r\n" + 
-				"|Phone case                              20,00|\r\n" + 
+				"|SIM card                                20,00|\r\n" + 
 				"|  Tax                                    2,40|\r\n" + 
+				"|                                             |\r\n" + 
+				"|SIM card                                 0,00|\r\n" + 
+				"|  Tax                                    0,00|\r\n" + 
+				"|                                             |\r\n" + 
+				"|Phone case                              10,00|\r\n" + 
+				"|  Tax                                    1,20|\r\n" + 
 				"|                                             |\r\n" + 
 				"|Wired earphones                         30,00|\r\n" + 
 				"|  Tax                                    3,60|\r\n" + 
@@ -59,7 +55,7 @@ class ParagonPrinterTest {
 				"|Total Amount:                           67,20|\r\n" + 
 				"-----------------------------------------------\r\n";
 		
-		assertEquals(output, outputReal);
+		assertEquals(outputReal, output);
 	}
 
 	@Test
@@ -73,11 +69,6 @@ class ParagonPrinterTest {
 		assertNotNull(p1);
 		assertNotNull(p1.getItems());
 		
-		p1.getItems().get(0).setPrice(BigDecimal.valueOf(10));
-		p1.getItems().get(1).setPrice(BigDecimal.valueOf(20));
-		
-		p1.recalculateTotals();
-		
 		String output = ParagonPrinter.printToString(p1);
 		
 		String outputReal = "-----------------------------------------------\r\n" + 
@@ -86,21 +77,21 @@ class ParagonPrinterTest {
 				"|                                             |\r\n" + 
 				"|Items:                                       |\r\n" + 
 				"|                                             |\r\n" + 
-				"|Phone insurance                         10,00|\r\n" + 
+				"|Phone insurance                        120,00|\r\n" + 
 				"|  Tax                                    0,00|\r\n" + 
 				"|                                             |\r\n" + 
-				"|Wireless earphones                      20,00|\r\n" + 
-				"|  Tax                                    2,40|\r\n" + 
+				"|Wireless earphones                      50,00|\r\n" + 
+				"|  Tax                                    6,00|\r\n" + 
 				"|                                             |\r\n" + 
 				"-----------------------------------------------\r\n" + 
-				"|Total Net Amount:                       30,00|\r\n" + 
+				"|Total Net Amount:                      170,00|\r\n" + 
 				"|                                             |\r\n" + 
-				"|Total Tax:                               2,40|\r\n" + 
+				"|Total Tax:                               6,00|\r\n" + 
 				"|                                             |\r\n" + 
-				"|Total Amount:                           32,40|\r\n" + 
+				"|Total Amount:                          176,00|\r\n" + 
 				"-----------------------------------------------\r\n";
 		
-		assertEquals(output, outputReal);
+		assertEquals(outputReal, output);
 	}
 
 	@Test
@@ -114,12 +105,6 @@ class ParagonPrinterTest {
 		assertNotNull(p1);
 		assertNotNull(p1.getItems());
 		
-		p1.getItems().get(0).setPrice(BigDecimal.valueOf(10));
-		p1.getItems().get(1).setPrice(BigDecimal.valueOf(20));
-		p1.getItems().get(2).setPrice(BigDecimal.valueOf(30));
-		
-		p1.recalculateTotals();
-		
 		String output = ParagonPrinter.printToString(p1);
 		
 		String outputReal = "-----------------------------------------------\r\n" + 
@@ -128,11 +113,14 @@ class ParagonPrinterTest {
 				"|                                             |\r\n" + 
 				"|Items:                                       |\r\n" + 
 				"|                                             |\r\n" + 
-				"|SIM card                                10,00|\r\n" + 
-				"|  Tax                                    1,20|\r\n" + 
-				"|                                             |\r\n" + 
-				"|Phone case                              20,00|\r\n" + 
+				"|SIM card                                20,00|\r\n" + 
 				"|  Tax                                    2,40|\r\n" + 
+				"|                                             |\r\n" + 
+				"|SIM card                                 0,00|\r\n" + 
+				"|  Tax                                    0,00|\r\n" + 
+				"|                                             |\r\n" + 
+				"|Phone case                              10,00|\r\n" + 
+				"|  Tax                                    1,20|\r\n" + 
 				"|                                             |\r\n" + 
 				"|Wired earphones                         30,00|\r\n" + 
 				"|  Tax                                    3,60|\r\n" + 
@@ -151,7 +139,7 @@ class ParagonPrinterTest {
 				"|Total Amount:                          243,20|\r\n" + 
 				"-----------------------------------------------\r\n";
 		
-		assertEquals(output, outputReal);
+		assertEquals(outputReal, output);
 	}
 
 	@Test
@@ -165,12 +153,6 @@ class ParagonPrinterTest {
 		assertNotNull(p1);
 		assertNotNull(p1.getItems());
 		
-		p1.getItems().get(0).setPrice(BigDecimal.valueOf(10));
-		p1.getItems().get(1).setPrice(BigDecimal.valueOf(20));
-		p1.getItems().get(2).setPrice(BigDecimal.valueOf(30));
-		
-		p1.recalculateTotals();
-		
 		String output = ParagonPrinter.printToString(p1);
 		
 		String outputReal = "-----------------------------------------------\r\n" + 
@@ -182,21 +164,21 @@ class ParagonPrinterTest {
 				"|Phone case                              10,00|\r\n" + 
 				"|  Tax                                    1,20|\r\n" + 
 				"|                                             |\r\n" + 
-				"|Wired earphones                         20,00|\r\n" + 
-				"|  Tax                                    2,40|\r\n" + 
-				"|                                             |\r\n" + 
-				"|Wireless earphones                      30,00|\r\n" + 
+				"|Wired earphones                         30,00|\r\n" + 
 				"|  Tax                                    3,60|\r\n" + 
 				"|                                             |\r\n" + 
+				"|Wireless earphones                      50,00|\r\n" + 
+				"|  Tax                                    6,00|\r\n" + 
+				"|                                             |\r\n" + 
 				"-----------------------------------------------\r\n" + 
-				"|Total Net Amount:                       60,00|\r\n" + 
+				"|Total Net Amount:                       90,00|\r\n" + 
 				"|                                             |\r\n" + 
-				"|Total Tax:                               7,20|\r\n" + 
+				"|Total Tax:                              10,80|\r\n" + 
 				"|                                             |\r\n" + 
-				"|Total Amount:                           67,20|\r\n" + 
+				"|Total Amount:                          100,80|\r\n" + 
 				"-----------------------------------------------\r\n";
 		
-		assertEquals(output, outputReal);
+		assertEquals(outputReal, output);
 	}
 
 	@Test
@@ -209,8 +191,6 @@ class ParagonPrinterTest {
 		
 		assertNotNull(p1);
 		assertNotNull(p1.getItems());
-		
-		p1.recalculateTotals();
 		
 		String output = ParagonPrinter.printToString(p1);
 		
@@ -228,7 +208,7 @@ class ParagonPrinterTest {
 				"|Total Amount:                            0,00|\r\n" + 
 				"-----------------------------------------------\r\n";
 		
-		assertEquals(output, outputReal);
+		assertEquals(outputReal, output);
 	}
 
 	@Test
@@ -242,11 +222,6 @@ class ParagonPrinterTest {
 		assertNotNull(p1);
 		assertNotNull(p1.getItems());
 		
-		p1.getItems().get(0).setPrice(BigDecimal.valueOf(10));
-		p1.getItems().get(1).setPrice(BigDecimal.valueOf(20));
-		
-		p1.recalculateTotals();
-		
 		String output = ParagonPrinter.printToString(p1);
 		
 		String outputReal = "-----------------------------------------------\r\n" + 
@@ -258,18 +233,18 @@ class ParagonPrinterTest {
 				"|Phone case                              10,00|\r\n" + 
 				"|  Tax                                    1,20|\r\n" + 
 				"|                                             |\r\n" + 
-				"|Wired earphones                         20,00|\r\n" + 
-				"|  Tax                                    2,40|\r\n" + 
+				"|Wired earphones                         30,00|\r\n" + 
+				"|  Tax                                    3,60|\r\n" + 
 				"|                                             |\r\n" + 
 				"-----------------------------------------------\r\n" + 
-				"|Total Net Amount:                       30,00|\r\n" + 
+				"|Total Net Amount:                       40,00|\r\n" + 
 				"|                                             |\r\n" + 
-				"|Total Tax:                               3,60|\r\n" + 
+				"|Total Tax:                               4,80|\r\n" + 
 				"|                                             |\r\n" + 
-				"|Total Amount:                           33,60|\r\n" + 
+				"|Total Amount:                           44,80|\r\n" + 
 				"-----------------------------------------------\r\n";
 		
-		assertEquals(output, outputReal);
+		assertEquals(outputReal, output);
 	}
 
 	@Test
