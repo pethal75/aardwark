@@ -1,0 +1,1 @@
+java -cp dist\Paragon.jar com.paragon.ParagonMain data\paragon1.txt
