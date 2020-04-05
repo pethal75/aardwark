@@ -50,3 +50,5 @@ Paragon data/paragon1.txt result:
 |                                             |
 |Total Amount:                            0,00|
 -----------------------------------------------
+
+Example windows batch file run-test1.bat can be run for previous example.
