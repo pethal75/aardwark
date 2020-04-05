@@ -1,6 +1,7 @@
 package com.paragon.io;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
@@ -269,5 +270,13 @@ class ParagonPrinterTest {
 				"-----------------------------------------------\r\n";
 		
 		assertEquals(output, outputReal);
+	}
+
+	@Test
+	void testPrintParagonMissing() {
+		ParagonController ctrl = new ParagonController();
+		Paragon p1 = ctrl.loadParagonFromFile("data/xyz.txt");
+		
+		assertNull(p1);
 	}
 }

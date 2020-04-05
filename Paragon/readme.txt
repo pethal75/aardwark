@@ -17,9 +17,9 @@ Standard store items are taxed with 12% tax, except insurance items, that have n
 Usage of program is following:
 ------------------------------
 
-java -jar Paragon.jar ParagonMain <input-file.txt>
+java -cp dist\Paragon.jar com.paragon.ParagonMain <input-file.txt>
 
-For input file:
+For input file (data\paragon1.txt):
 
 SIM card
 Phone case

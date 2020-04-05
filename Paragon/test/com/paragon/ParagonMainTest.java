@@ -21,6 +21,10 @@ class ParagonMainTest {
 		String args4[] = { "data/paragon-err2.txt" };
 		
 		ParagonMain.main(args4);
+
+		String args5[] = { };
+		
+		ParagonMain.main(args5);
 	}
 
 }
